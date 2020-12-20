@@ -1,0 +1,95 @@
+<!--
+	Form to enter persona name
+-->
+<div *ngIf="this.formSwitch == true">
+     
+     <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8" style="height:400px; margin-top: 50px;padding-left: 50px;background-color: #d3d3d3;">
+               <form [formGroup]="personaService.form" (ngSubmit)="onSubmit()">
+	               <p class="row" style="margin-top: 10px;">Create Persona</p>
+                    <input placeholder="Name" 
+                         formControlName="personaName" 
+                         type="text" 
+                         class="row"
+                         style="margin-top: -10px;"
+                         required minlength="4">
+                    <button class="row" style="margin-top: 10px;">Submit</button>
+               </form>
+          </div>
+          <div class="col-2"></div>
+
+     </div>
+
+</div>
+<div *ngIf="this.formSwitch == false">
+
+     <div style="height:400px; margin-top: 50px; margin-left: 100px;padding-left: 30px;
+    background-color: #d3d3d3;">
+     <div class="row">
+
+       <p> What mountain does Persona {{this.getName()}} see?</p>
+     <!-- slider settings for persona with update-->
+
+     </div>
+     <div class="row">
+
+          <div class="col-4">
+
+               <p>Distance {{this.getsetting(1)}}</p>
+               <input type="range" min="0" max="100" #setting1 value="{{this.getsetting(1)}}" (input)="this.updatePersonaSetting(1,setting1.value)">
+  
+          </div>
+          <div class="col-4">
+
+               <p>Snow {{this.getsetting(2)}}</p>
+               <input type="range" min="0" max="100" #setting2 value="{{this.getsetting(2)}}" (input)="this.updatePersonaSetting(2,setting2.value)">
+  
+          </div>
+          <div class="col-4">
+
+               <p>Vision Quality {{this.getsetting(3)}}</p>
+               <input type="range" min="0" max="100" #setting3 value="{{this.getsetting(3)}}" (input)="this.updatePersonaSetting(3,setting3.value)">
+
+          </div>
+
+     </div>
+
+     <div class="row">
+          <div class="col-4">
+               <img src="../../assets/Picture1.png">
+          </div>
+          <div class="col-4">
+               <img src="../../assets/Picture2.png">
+          </div>
+          <div class="col-4">
+               <img src="../../assets/Picture3.png">
+          </div>
+     </div>
+     <div class="row">
+          
+               <div *ngIf="this.imageChoice === 1" class="col-4" style="background-color: yellow;margin-left:0px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 1" class="col-4" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 1" class="col-4" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
+          
+          
+               <div *ngIf="this.imageChoice === 2" class="col-4" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 2" class="col-4" style="background-color: yellow;margin-left:0px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 2" class="col-4" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
+          
+               <div *ngIf="this.imageChoice === 3" class="col-4" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 3" class="col-4" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 3" class="col-4" style="background-color: yellow;margin-left:0px; height:10px; margin-top: 10px;"></div>
+          
+     </div>
+
+     <div class="row" style="margin-top: 10px;">
+          <button (click)="goBack()">Go Back</button>
+     </div>
+     </div>
+</div>
+
+<!-- TODO : Remove for PROD
+      patchwork way to download data for machine learning related data processing
+     NOT FOR PRODUCTION-->
+<button #downloadDataWithLimit style="display:none" (click)="downLoadData()">DownloadData</button>
