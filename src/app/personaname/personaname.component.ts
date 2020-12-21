@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonaService } from '../persona.service';
 import { isUndefined } from 'util';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-personaname',
@@ -17,7 +18,6 @@ export class PersonanameComponent implements OnInit {
   }
   ngOnInit() {
     this.getPredictedSetting();
-
   }
 
   goBack() {
@@ -38,7 +38,15 @@ export class PersonanameComponent implements OnInit {
   }
 }
 
+  jqueryForExplaination() {
+
+        // Toggle plus minus icon on show hide of collapse element
+        $(".fa").toggleClass("fa-plus");
+        $(".fa").toggleClass("fa-minus");
+  }
+
   onSubmit() {
+
     if (isUndefined(this.predictedSetting)) {
       this.personaService.form.patchValue({setting1: 0, setting2: 0, setting3: 0});
     } else {
