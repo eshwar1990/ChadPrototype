@@ -1,6 +1,48 @@
 <!--
 	Form to enter persona name
 -->
+<style>
+.imgBackground {
+     border-style: solid;
+    border-color: #9EBEF3;
+}
+.slider {
+  -webkit-appearance: none;
+  width: 60%;
+  height: 1px;
+  background: black;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid ghostwhite;
+  margin-top:12px;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid ghostwhite;
+  margin-top:12px;
+  cursor: pointer;
+}
+</style>
 <div *ngIf="this.formSwitch == true">
      
      <div class="row">
@@ -34,52 +76,63 @@
      </div>
      <div class="row">
 
-          <div class="col-4">
+          <div class="col-3" style="text-align: center;padding-bottom: 30px;">
 
-               <p>Distance {{this.getsetting(1)}}</p>
-               <input type="range" min="0" max="100" #setting1 value="{{this.getsetting(1)}}" (input)="this.updatePersonaSetting(1,setting1.value)">
+               <p style="margin-bottom: 0px;">Distance <br/> {{this.getsetting(1)}}</p>
+               <input class="slider" type="range" min="0" max="100" #setting1 value="{{this.getsetting(1)}}" (input)="this.updatePersonaSetting(1,setting1.value)">
   
           </div>
-          <div class="col-4">
+          <div class="col-1"></div>
+          <div class="col-3" style="text-align: center; padding-bottom: 30px;">
 
-               <p>Snow {{this.getsetting(2)}}</p>
-               <input type="range" min="0" max="100" #setting2 value="{{this.getsetting(2)}}" (input)="this.updatePersonaSetting(2,setting2.value)">
+               <p style="margin-bottom: 0px;">Snow <br/> {{this.getsetting(2)}}</p>
+               <input class="slider" type="range" min="0" max="100" #setting2 value="{{this.getsetting(2)}}" (input)="this.updatePersonaSetting(2,setting2.value)">
   
           </div>
-          <div class="col-4">
+          <div class="col-1"></div>
+          <div class="col-3" style="text-align: center; padding-bottom: 30px;">
 
-               <p>Vision Quality {{this.getsetting(3)}}</p>
-               <input type="range" min="0" max="100" #setting3 value="{{this.getsetting(3)}}" (input)="this.updatePersonaSetting(3,setting3.value)">
+               <p style="margin-bottom: 0px;">Vision Quality <br/> {{this.getsetting(3)}}</p>
+               <input class="slider" type="range" min="0" max="100" #setting3 value="{{this.getsetting(3)}}" (input)="this.updatePersonaSetting(3,setting3.value)">
 
           </div>
 
      </div>
 
      <div class="row">
-          <div class="col-4">
-               <img src="../../assets/Picture1.png">
+          <div class="col-3" style="text-align:center">
+               <img id="picBack1" style="padding: 10px;" src="../../assets/Picture1.png">
           </div>
-          <div class="col-4">
-               <img src="../../assets/Picture2.png">
+          <div class="col-1"></div>
+          <div class="col-3" style="text-align:center">
+               <img id="picBack2" style="padding: 10px;" src="../../assets/Picture2.png">
           </div>
-          <div class="col-4">
-               <img src="../../assets/Picture3.png">
+          <div class="col-1"></div>
+          <div class="col-3" style="text-align:center">
+               <img id="picBack3" style="padding: 10px;" src="../../assets/Picture3.png">
           </div>
+          <div class="col-1"></div>
      </div>
      <div class="row">
           
-               <div *ngIf="this.imageChoice === 1" class="col-4" style="background-color: yellow;margin-left:0px; height:10px; margin-top: 10px;"></div>
-               <div *ngIf="this.imageChoice === 1" class="col-4" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
-               <div *ngIf="this.imageChoice === 1" class="col-4" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 1" class="col-3" style="background-color: yellow;margin-left: 15px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 1" class="col-1"></div>
+               <div *ngIf="this.imageChoice === 1" class="col-3" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 1" class="col-1"></div>
+               <div *ngIf="this.imageChoice === 1" class="col-3" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
           
           
-               <div *ngIf="this.imageChoice === 2" class="col-4" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
-               <div *ngIf="this.imageChoice === 2" class="col-4" style="background-color: yellow;margin-left:0px; height:10px; margin-top: 10px;"></div>
-               <div *ngIf="this.imageChoice === 2" class="col-4" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 2" class="col-3" style="margin-left:15px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 2" class="col-1"></div>
+               <div *ngIf="this.imageChoice === 2" class="col-3" style="background-color: yellow;margin-left:0px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 2" class="col-1"></div>
+               <div *ngIf="this.imageChoice === 2" class="col-3" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
           
-               <div *ngIf="this.imageChoice === 3" class="col-4" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
-               <div *ngIf="this.imageChoice === 3" class="col-4" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
-               <div *ngIf="this.imageChoice === 3" class="col-4" style="background-color: yellow;margin-left:0px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 3" class="col-3" style="margin-left:15px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 3" class="col-1"></div>
+               <div *ngIf="this.imageChoice === 3" class="col-3" style="margin-left:0px; height:10px; margin-top: 10px;"></div>
+               <div *ngIf="this.imageChoice === 3" class="col-1"></div>
+               <div *ngIf="this.imageChoice === 3" class="col-3" style="background-color: yellow;margin-left:0px; height:10px; margin-top: 10px;"></div>
           
      </div>
 
@@ -106,9 +159,9 @@
                                         <img src="../../assets/Picture4.png" width="419" height="253">
                                    </div>
                                    <div class="row">
-                                        <b>Conceptual Overview:</b> The purpose of the "what mountain does the persona see?" prototype has been designed around illustrating how A/B testing technology, combined with Machine Learning language Julia and Linear Algebra’s Vector and Spaces concepts, can create another layer of dynamic interfaces to pursue in building reactive learning programs for targeted personas (i.e. those who have exhibited certain, targeted behavior traits)  using enterprise applications  through baseline setting,  presenting new experiences based off learnings, learning from experiences and then presenting another experience in a seamless fashion.
+                                        <b>Conceptual Overview:</b> The purpose of the "what mountain does the persona see?" prototype has been designed around illustrating how A/B testing technology, combined with Machine Learning language Julia and Linear Algebra’s Vector and Spaces concepts, can create another layer of dynamic interfaces to pursue in building reactive learning programs for targeted personas (i.e. those who have exhibited certain, targeted behavior traits)  using enterprise applications  through baseline setting,  presenting new experiences based off learnings, learning from experiences and then presenting another experience in a seamless fashion.<br/><br/>
 
-The prototype's designed A/B testing was conceived within a component-based front-end architecture in mind allowing for simple UI (images, instruction text and models) to portlet (graphs, columns and data points) experiences' changes and learning happening to ensure continuous and real-time based learnings on targeted personas to optimize their experience.
+The prototype's designed A/B testing was conceived within a component-based front-end architecture in mind allowing for simple UI (images, instruction text and models) to portlet (graphs, columns and data points) experiences' changes and learning happening to ensure continuous and real-time based learnings on targeted personas to optimize their experience.<br/><br/>
 
 The prototype is also my personal first step into world of machine learning, user experience design and user experience optimization in understanding how to learn from targeted human experiences to continuously and in real-time optimize for their experience 
                                    </div>
@@ -123,4 +176,4 @@ The prototype is also my personal first step into world of machine learning, use
 <!-- TODO : Remove for PROD
       patchwork way to download data for machine learning related data processing
      NOT FOR PRODUCTION-->
-<button #downloadDataWithLimit style="display:none" (click)="downLoadData()">DownloadData</button>
+<button #downloadDataWithLimit style="display:none" (click)="this.downLoadData()">DownloadData</button>

@@ -53,12 +53,60 @@ export class PersonanameComponent implements OnInit {
       this.personaService.form.patchValue({setting1: this.predictedSetting[0].data.setting1,
         setting2: this.predictedSetting[0].data.setting2,
         setting3: this.predictedSetting[0].data.setting3});
+        this.calculateAvg(0)
     }
 
     const data = this.personaService.form.value;
     this.personaService.createPersonaObject(data).then(res => {
       this.formSwitch = false;
     });
+  }
+
+  calculateAvg(option){
+    var avg = (parseInt(this.personaService.form.get('setting1').value) +
+      parseInt(this.personaService.form.get('setting2').value) +
+        parseInt(this.personaService.form.get('setting3').value)) / 3;
+
+    if (avg < 33) {
+      this.imageChoice = 1;
+      if (option === 0) {
+        setTimeout(() => {
+          $("#picBack1").addClass("imgBackground");
+          $("#picBack2").removeClass("imgBackground");
+          $("#picBack3").removeClass("imgBackground");
+        }, 500);
+      } else {
+      $("#picBack1").addClass("imgBackground");
+      $("#picBack2").removeClass("imgBackground");
+      $("#picBack3").removeClass("imgBackground");
+      }
+    } else if (avg < 66) {
+      this.imageChoice = 2;
+      if (option === 0) {
+        setTimeout(() => {
+          $("#picBack1").removeClass("imgBackground");
+          $("#picBack2").addClass("imgBackground");
+          $("#picBack3").removeClass("imgBackground");
+        }, 500);
+      } else {
+      $("#picBack1").removeClass("imgBackground");
+      $("#picBack2").addClass("imgBackground");
+      $("#picBack3").removeClass("imgBackground");
+      }
+    } else {
+      this.imageChoice = 3;
+      if (option === 0) {
+        setTimeout(() => {
+          $("#picBack1").removeClass("imgBackground");
+          $("#picBack2").removeClass("imgBackground");
+          $("#picBack3").addClass("imgBackground");
+        }, 500);
+      } else {
+      $("#picBack1").removeClass("imgBackground");
+      $("#picBack2").removeClass("imgBackground");
+      $("#picBack3").addClass("imgBackground");
+      }
+    }
   }
 
   updatePersonaSetting(option, data) {
@@ -73,17 +121,7 @@ export class PersonanameComponent implements OnInit {
       this.personaService.form.patchValue({setting3: data});
     }
     this.personaService.updatePersonaObject(this.personaService.form.value);
-    avg = (parseInt(this.personaService.form.get('setting1').value) +
-      parseInt(this.personaService.form.get('setting2').value) +
-        parseInt(this.personaService.form.get('setting3').value)) / 3;
-
-    if (avg < 33) {
-      this.imageChoice = 1;
-    } else if (avg < 66) {
-      this.imageChoice = 2;
-    } else {
-      this.imageChoice = 3;
-    }
+    this.calculateAvg(1);
   }
 
 
