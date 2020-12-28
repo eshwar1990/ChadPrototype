@@ -1,24 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { PersonaService } from '../persona.service';
 import { isUndefined } from 'util';
 import * as $ from 'jquery';
+import { OptimizelyService } from '../optimizely.service';
 
 @Component({
   selector: 'app-personaname',
   templateUrl: './personaname.component.html',
   styleUrls: ['./personaname.component.css']
 })
-export class PersonanameComponent implements OnInit {
+export class PersonanameComponent implements OnInit, AfterViewInit {
 
   personaList;
   formSwitch = true;
   imageChoice = 1;
   predictedSetting;
-  constructor( private personaService: PersonaService) {
+  constructor( private personaService: PersonaService, public optimizelyService: OptimizelyService) {
   }
   ngOnInit() {
     this.getPredictedSetting();
   }
+
+  ngAfterViewInit() {
+ // subscribe to experiment and add create variations
+    this.optimizelyService.getExperiment().subscribe(variation => {
+      if (variation === 'variation_1') {
+      // Code for Variation 1
+      } else if (variation === 'variation_2') {
+      // code for Variation 2
+      }
+      });
+}
+
 
   goBack() {
     this.formSwitch = true;
