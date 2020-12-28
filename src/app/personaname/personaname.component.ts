@@ -25,9 +25,9 @@ export class PersonanameComponent implements OnInit, AfterViewInit {
  // subscribe to experiment and add create variations
     this.optimizelyService.getExperiment().subscribe(variation => {
       if (variation === 'variation_1') {
-      // Code for Variation 1
+      console.log('in variation 1');
       } else if (variation === 'variation_2') {
-      // code for Variation 2
+      console.log('in variation 2');
       }
       });
 }
